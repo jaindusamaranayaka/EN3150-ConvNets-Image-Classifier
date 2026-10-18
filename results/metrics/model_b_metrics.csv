@@ -1,0 +1,2 @@
+Model,Parameters,Estimated FP32 Size (KB),Actual Model Size (KB),Average Epoch Time (s),Inference Time (ms/image),Test Accuracy,Macro Precision,Macro Recall
+Model B,25526,99.7109375,105.6103515625,34.1760440500002,0.341721562500652,0.9767267267267268,0.9806833554287041,0.9790990022944088

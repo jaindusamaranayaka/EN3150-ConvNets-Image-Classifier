@@ -13,7 +13,7 @@ class ModelA(nn.Module):
         self.features = nn.Sequential(
 
             nn.Conv2d(
-                3, 32,
+                3, 16,
                 kernel_size=3,
                 padding=1
             ),
@@ -21,7 +21,7 @@ class ModelA(nn.Module):
             nn.MaxPool2d(2),
 
             nn.Conv2d(
-                32, 64,
+                16, 32,
                 kernel_size=3,
                 padding=1
             ),
@@ -29,7 +29,7 @@ class ModelA(nn.Module):
             nn.MaxPool2d(2),
 
             nn.Conv2d(
-                64, 128,
+                32, 32,
                 kernel_size=3,
                 padding=1
             ),
@@ -37,7 +37,7 @@ class ModelA(nn.Module):
             nn.MaxPool2d(2),
 
             nn.Conv2d(
-                128, 160,
+                32, 32,
                 kernel_size=3,
                 padding=1
             ),
@@ -45,25 +45,11 @@ class ModelA(nn.Module):
             nn.MaxPool2d(2)
         )
 
-        self.pool = nn.AdaptiveAvgPool2d(
-            (1, 1)
-        )
-
         self.classifier = nn.Sequential(
 
             nn.Flatten(),
-
             nn.Linear(
-                160,
-                128
-            ),
-
-            nn.ReLU(),
-
-            nn.Dropout(0.3),
-
-            nn.Linear(
-                128,
+                512,
                 num_classes
             )
         )
@@ -71,7 +57,6 @@ class ModelA(nn.Module):
     def forward(self, x):
 
         x = self.features(x)
-        x = self.pool(x)
         x = self.classifier(x)
 
         return x
@@ -128,45 +113,31 @@ class ModelB(nn.Module):
         self.features = nn.Sequential(
 
             DepthwiseSeparableConv(
-                3, 32
+                3, 16
             ),
             nn.MaxPool2d(2),
 
             DepthwiseSeparableConv(
-                32, 64
+                16, 32
             ),
             nn.MaxPool2d(2),
 
             DepthwiseSeparableConv(
-                64, 128
+                32, 32
             ),
             nn.MaxPool2d(2),
 
             DepthwiseSeparableConv(
-                128, 160
+                32, 32
             ),
             nn.MaxPool2d(2)
-        )
-
-        self.pool = nn.AdaptiveAvgPool2d(
-            (1, 1)
         )
 
         self.classifier = nn.Sequential(
 
             nn.Flatten(),
-
             nn.Linear(
-                160,
-                128
-            ),
-
-            nn.ReLU(),
-
-            nn.Dropout(0.3),
-
-            nn.Linear(
-                128,
+                512,
                 num_classes
             )
         )
@@ -174,7 +145,6 @@ class ModelB(nn.Module):
     def forward(self, x):
 
         x = self.features(x)
-        x = self.pool(x)
         x = self.classifier(x)
 
         return x

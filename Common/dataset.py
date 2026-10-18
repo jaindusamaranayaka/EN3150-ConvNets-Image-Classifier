@@ -72,10 +72,27 @@ class GTSRBDataset(Dataset):
 
         row = self.dataframe.iloc[index]
 
-        image_path = (
-            self.data_root
-            / row["Path"]
-        )
+        image_path = self.data_root / row["Path"]
+        if not image_path.exists():
+            # The supplied split CSV uses the extracted Kaggle layout
+            # (Train/18/00018_00023_00028.png), while the included archive
+            # uses the original GTSRB layout (Training/00018/00023_00028.ppm).
+            path_parts = Path(row["Path"]).parts
+            if len(path_parts) >= 3:
+                class_id = int(path_parts[-2])
+                filename = Path(path_parts[-1])
+                filename = f"{filename.stem.split('_', 1)[1]}.ppm"
+                candidates = [
+                    base / "Training" / f"{class_id:05d}" / filename
+                    for base in (self.data_root, self.data_root / "GTSRB")
+                ]
+                image_path = next(
+                    (candidate for candidate in candidates if candidate.exists()),
+                    candidates[0],
+                )
+
+        if not image_path.exists():
+            raise FileNotFoundError(f"Image listed in split was not found: {image_path}")
 
         image = Image.open(
             image_path
