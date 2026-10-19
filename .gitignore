@@ -47,3 +47,9 @@ models/
 # Notebook and editor scratch files
 .jupyter/
 .history/
+
+# LaTeX report build output (.aux, .log, ...); only the final PDF is committed.
+# The folder is re-included first because the "build/" rule above ignores it.
+!Report/build/
+Report/build/*
+!Report/build/DINO_A03_EN3150.pdf

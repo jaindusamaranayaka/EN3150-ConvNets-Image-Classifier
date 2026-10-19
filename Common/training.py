@@ -4,6 +4,10 @@ import copy
 import torch
 
 
+# =========================================================
+# One training epoch
+# =========================================================
+
 def train_one_epoch(
     model,
     loader,
@@ -12,6 +16,7 @@ def train_one_epoch(
     device
 ):
 
+    # Training mode (enables training-only behaviour such as dropout)
     model.train()
 
     running_loss = 0.0
@@ -23,6 +28,7 @@ def train_one_epoch(
         images = images.to(device)
         labels = labels.to(device)
 
+        # Clear the gradients left over from the previous batch
         optimizer.zero_grad(
             set_to_none=True
         )
@@ -34,9 +40,11 @@ def train_one_epoch(
             labels
         )
 
+        # Backpropagate the loss and update the weights
         loss.backward()
         optimizer.step()
 
+        # Sum of per-image losses, so the epoch loss is a per-image average
         running_loss += (
             loss.item()
             * images.size(0)
@@ -66,6 +74,10 @@ def train_one_epoch(
     )
 
 
+# =========================================================
+# One evaluation pass (no weight updates)
+# =========================================================
+
 def evaluate_epoch(
     model,
     loader,
@@ -79,6 +91,7 @@ def evaluate_epoch(
     correct = 0
     total = 0
 
+    # No gradients are needed, which saves memory and time
     with torch.no_grad():
 
         for images, labels in loader:
@@ -122,6 +135,10 @@ def evaluate_epoch(
     )
 
 
+# =========================================================
+# Full training run
+# =========================================================
+
 def train_model(
     model,
     train_loader,
@@ -132,6 +149,7 @@ def train_model(
     device
 ):
 
+    # Per-epoch record, used for the loss / accuracy curves and timing
     history = {
         "train_loss": [],
         "train_accuracy": [],
@@ -148,6 +166,7 @@ def train_model(
 
     for epoch in range(epochs):
 
+        # Epoch time covers both training and validation
         start_time = time.perf_counter()
 
         train_loss, train_acc = train_one_epoch(
@@ -190,6 +209,7 @@ def train_model(
             elapsed
         )
 
+        # Keep a copy of the weights from the epoch with the lowest validation loss
         if val_loss < best_val_loss:
 
             best_val_loss = val_loss
@@ -207,6 +227,7 @@ def train_model(
             f"Time: {elapsed:.2f}s"
         )
 
+    # Return the best weights, not the last epoch's
     model.load_state_dict(
         best_weights
     )
@@ -216,6 +237,10 @@ def train_model(
 
 import torch.optim as optim
 
+
+# =========================================================
+# Optimizer by name (the settings compared in the optimizer study)
+# =========================================================
 
 def create_optimizer(
     optimizer_name,

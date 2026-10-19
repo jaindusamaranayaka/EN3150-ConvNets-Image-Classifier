@@ -72,27 +72,31 @@ class GTSRBDataset(Dataset):
 
         row = self.dataframe.iloc[index]
 
-        image_path = self.data_root / row["Path"]
+        listed_path = self.data_root / row["Path"]
+        image_path = listed_path
         if not image_path.exists():
-            # The supplied split CSV uses the extracted Kaggle layout
-            # (Train/18/00018_00023_00028.png), while the included archive
-            # uses the original GTSRB layout (Training/00018/00023_00028.ppm).
+            # A split CSV may use the extracted Kaggle layout
+            # (Train/18/00018_00023_00028.png) or the original GTSRB layout
+            # (Training/00018/00023_00028.ppm); look for the original file.
             path_parts = Path(row["Path"]).parts
-            if len(path_parts) >= 3:
+            name_parts = Path(path_parts[-1]).stem.split("_")
+            if len(path_parts) >= 3 and path_parts[-2].isdigit():
                 class_id = int(path_parts[-2])
-                filename = Path(path_parts[-1])
-                filename = f"{filename.stem.split('_', 1)[1]}.ppm"
+                # Kaggle names carry the class as an extra prefix
+                if len(name_parts) == 3:
+                    name_parts = name_parts[1:]
+                filename = f"{'_'.join(name_parts)}.ppm"
                 candidates = [
                     base / "Training" / f"{class_id:05d}" / filename
                     for base in (self.data_root, self.data_root / "GTSRB")
                 ]
                 image_path = next(
                     (candidate for candidate in candidates if candidate.exists()),
-                    candidates[0],
+                    listed_path,
                 )
 
         if not image_path.exists():
-            raise FileNotFoundError(f"Image listed in split was not found: {image_path}")
+            raise FileNotFoundError(f"Image listed in split was not found: {listed_path}")
 
         image = Image.open(
             image_path
@@ -123,6 +127,13 @@ def create_dataloaders(
     eval_transform_override=None,
     seed=42
 ):
+
+    # Fail early with a clear message instead of a missing-image error at the first batch
+    if not Path(data_root).is_dir():
+        raise FileNotFoundError(
+            f"Dataset folder not found: {data_root}. "
+            "Run `python download_data.py` from the project root first."
+        )
 
     selected_train_transform = (
         train_transform
