@@ -41,3 +41,6 @@ models/
 *.tmp
 *.temp
 *.log
+
+# LaTeX report build output (main.pdf, .aux, .log, ...)
+Report/build/
