@@ -56,8 +56,27 @@ Comparison/src/
   ModelA_vs_ModelB.ipynb      Task 4 comparison table and figures
   ModelB_vs_SOTA.ipynb        Task 6 comparison table and trade-off plots
 results/                    All saved outputs, one folder per model plus Optimizer, Dataset and Comparisons
+Report/
+  DINO_A03_EN3150.tex         LaTeX source of the report
+  figures/                    Copies of the result figures used in the report
+  build/DINO_A03_EN3150.pdf   Compiled report
+Documents/                  Assignment brief
 download_data.py            Dataset download and check
 ```
+
+## Report
+
+The report is `Report/DINO_A03_EN3150.tex`; the compiled PDF is `Report/build/DINO_A03_EN3150.pdf`. To rebuild it, run
+`pdflatex` twice from the `Report` folder (the second run fills in the contents and cross-references):
+
+```bash
+cd Report
+pdflatex -output-directory=build DINO_A03_EN3150.tex
+pdflatex -output-directory=build DINO_A03_EN3150.tex
+```
+
+The folder is self-contained, so it can also be uploaded to Overleaf as it is. The figures in `Report/figures/` are
+copies of those in `results/`; copy them again if a model is retrained.
 
 ## Running the notebooks
 

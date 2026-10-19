@@ -12,6 +12,7 @@
 \usepackage{subcaption}
 \usepackage{xurl}
 \usepackage{tikz}
+\usepackage{needspace}
 
 \hypersetup{
     colorlinks=true,
@@ -359,7 +360,7 @@ SGD ($\eta = 0.1$, control)                  & 4     & 0.200 & 98.37 & 96.60 & 9
 \label{fig:optim}
 \end{figure}
 
-\subsection{Selected Optimizer: Adam, $\eta = 0.001$}
+\subsection{Selected Optimizer: Adam, \texorpdfstring{$\eta = 0.001$}{learning rate 0.001}}
 
 \textbf{Adam} \cite{adam} with the standard learning rate $\eta = 0.001$ ($\beta_1 = 0.9$, $\beta_2 = 0.999$) was
 selected for Models A and B (Figure~\ref{fig:optim}):
@@ -402,7 +403,7 @@ Getting momentum's early speed without the late instability would need a moderat
 learning rate. Adam provides fast and stable convergence without this tuning, which is why it was chosen. A
 preliminary three-optimizer run on Model B (batch size 128) also ranked Adam first.
 
-\begin{figure}[H]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{figures/momentum_sweep.png}
 \caption{Momentum sweep at $\eta = 0.01$: training loss (log scale) and validation accuracy. The dashed line is the
@@ -730,14 +731,16 @@ fewer MACs. EfficientNet-B0 is the least efficient model here: it is larger, slo
 MobileNetV2, because its design was tuned for $224 \times 224$ inputs and its SiLU activations and
 squeeze-and-excitation gates require exponentials.
 
-\begin{figure}[H]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figures/final_validation_accuracy.png}
 \caption{Validation accuracy per epoch for all four models. The pretrained models are unfrozen after epoch 3.}
 \label{fig:valacc}
 \end{figure}
 
-\textbf{Custom sub-100k model: advantages and limitations.}
+\medskip
+\needspace{6\baselineskip}
+\noindent\textbf{Custom sub-100k model: advantages and limitations.}
 \begin{itemize}
     \item[+] Tiny memory footprint (25\,KB in 8-bit form) and very low compute; deployable on microcontrollers.
     \item[+] Uses only operations that are cheap and widely supported on edge hardware (convolution, ReLU, max-pooling).
@@ -747,7 +750,9 @@ squeeze-and-excitation gates require exponentials.
     \item[--] Its theoretical savings only become real speed with optimised depthwise kernels on the target hardware.
 \end{itemize}
 
-\textbf{Pretrained lightweight model: advantages and limitations.}
+\medskip
+\needspace{6\baselineskip}
+\noindent\textbf{Pretrained lightweight model: advantages and limitations.}
 \begin{itemize}
     \item[+] Highest accuracy and fastest convergence thanks to transfer learning; little architecture design needed.
     \item[--] 2--4\,MB even when quantised, 17--23$\times$ the MACs and 4--6$\times$ the latency of Model B; too large
