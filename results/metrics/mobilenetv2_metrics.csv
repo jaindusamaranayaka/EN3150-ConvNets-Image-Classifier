@@ -1,0 +1,2 @@
+Model,Parameters,MACs per Image,Estimated FP32 Size (MB),Model Size (MB),Average Epoch Time (s),Inference Time (ms/image),Test Accuracy,Macro Precision,Macro Recall
+MobileNetV2,2278955,24503552,8.693523406982422,8.92988109588623,59.172996765000065,0.5984149374899062,1.0,1.0,1.0
