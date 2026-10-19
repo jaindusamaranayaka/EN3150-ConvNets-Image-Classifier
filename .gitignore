@@ -5,6 +5,7 @@ env/
 
 # Python cache and build files
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *.egg-info/
 build/
@@ -12,6 +13,7 @@ dist/
 
 # Jupyter
 .ipynb_checkpoints/
+*.ipynb_checkpoints/
 
 # Local datasets
 data/
@@ -41,3 +43,7 @@ models/
 *.tmp
 *.temp
 *.log
+
+# Notebook and editor scratch files
+.jupyter/
+.history/

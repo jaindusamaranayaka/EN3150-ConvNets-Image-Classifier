@@ -395,12 +395,11 @@
 
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{14}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import} \PY{n+nn}{os}
 \PY{k+kn}{import} \PY{n+nn}{time}
 \PY{k+kn}{import} \PY{n+nn}{copy}
-\PY{k+kn}{import} \PY{n+nn}{json}
 \PY{k+kn}{import} \PY{n+nn}{random}
 \PY{k+kn}{import} \PY{n+nn}{sys}
 
@@ -431,15 +430,20 @@
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{15}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} autoreload
 \PY{o}{\PYZpc{}}\PY{k}{autoreload} 2
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+The autoreload extension is already loaded. To reload it, use:
+  \%reload\_ext autoreload
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{16}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{SEED} \PY{o}{=} \PY{l+m+mi}{42}
 
@@ -457,7 +461,7 @@
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{17}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{device} \PY{o}{=} \PY{n}{torch}\PY{o}{.}\PY{n}{device}\PY{p}{(}
     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cuda}\PY{l+s+s2}{\PYZdq{}} \PY{k}{if} \PY{n}{torch}\PY{o}{.}\PY{n}{cuda}\PY{o}{.}\PY{n}{is\PYZus{}available}\PY{p}{(}\PY{p}{)} \PY{k}{else} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cpu}\PY{l+s+s2}{\PYZdq{}}
@@ -467,8 +471,12 @@
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+Using device: cpu
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{18}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k}{def} \PY{n+nf}{find\PYZus{}project\PYZus{}root}\PY{p}{(}\PY{p}{)}\PY{p}{:}
     \PY{n}{current} \PY{o}{=} \PY{n}{Path}\PY{o}{.}\PY{n}{cwd}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{resolve}\PY{p}{(}\PY{p}{)}
@@ -492,8 +500,13 @@
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+Project root: C:\textbackslash{}Users\textbackslash{}Jaindu Samaranayaka\textbackslash{}Documents\textbackslash{}Semester\_5\textbackslash{}PR\textbackslash{}CNN for image
+classification
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{19}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k}{if} \PY{n+nb}{str}\PY{p}{(}\PY{n}{PROJECT\PYZus{}ROOT}\PY{p}{)} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{sys}\PY{o}{.}\PY{n}{path}\PY{p}{:}
 
@@ -505,7 +518,7 @@
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{20}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{from} \PY{n+nn}{Common}\PY{n+nn}{.}\PY{n+nn}{dataset} \PY{k+kn}{import} \PY{n}{create\PYZus{}dataloaders}
 
@@ -519,7 +532,7 @@
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{21}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{train\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}
     \PY{n}{SPLIT\PYZus{}DIR} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{train\PYZus{}split.csv}\PY{l+s+s2}{\PYZdq{}}
@@ -539,8 +552,14 @@
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+Train: 18648
+Validation: 3996
+Test: 3996
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{22}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{train\PYZus{}loader}\PY{p}{,} \PY{n}{val\PYZus{}loader}\PY{p}{,} \PY{n}{test\PYZus{}loader} \PY{o}{=} \PY{n}{create\PYZus{}dataloaders}\PY{p}{(}
     \PY{n}{train\PYZus{}df}\PY{o}{=}\PY{n}{train\PYZus{}df}\PY{p}{,}
@@ -573,7 +592,7 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 100,000 parameter limit.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{23}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{model\PYZus{}b} \PY{o}{=} \PY{n}{ModelB}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{to}\PY{p}{(}\PY{n}{device}\PY{p}{)}
 
@@ -590,10 +609,54 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+ModelB(
+  (features): Sequential(
+    (0): DepthwiseSeparableConv(
+      (depthwise): Conv2d(3, 3, kernel\_size=(3, 3), stride=(1, 1), padding=(1,
+1), groups=3, bias=False)
+      (pointwise): Conv2d(3, 16, kernel\_size=(1, 1), stride=(1, 1))
+      (relu): ReLU()
+    )
+    (1): MaxPool2d(kernel\_size=2, stride=2, padding=0, dilation=1,
+ceil\_mode=False)
+    (2): DepthwiseSeparableConv(
+      (depthwise): Conv2d(16, 16, kernel\_size=(3, 3), stride=(1, 1), padding=(1,
+1), groups=16, bias=False)
+      (pointwise): Conv2d(16, 32, kernel\_size=(1, 1), stride=(1, 1))
+      (relu): ReLU()
+    )
+    (3): MaxPool2d(kernel\_size=2, stride=2, padding=0, dilation=1,
+ceil\_mode=False)
+    (4): DepthwiseSeparableConv(
+      (depthwise): Conv2d(32, 32, kernel\_size=(3, 3), stride=(1, 1), padding=(1,
+1), groups=32, bias=False)
+      (pointwise): Conv2d(32, 32, kernel\_size=(1, 1), stride=(1, 1))
+      (relu): ReLU()
+    )
+    (5): MaxPool2d(kernel\_size=2, stride=2, padding=0, dilation=1,
+ceil\_mode=False)
+    (6): DepthwiseSeparableConv(
+      (depthwise): Conv2d(32, 32, kernel\_size=(3, 3), stride=(1, 1), padding=(1,
+1), groups=32, bias=False)
+      (pointwise): Conv2d(32, 32, kernel\_size=(1, 1), stride=(1, 1))
+      (relu): ReLU()
+    )
+    (7): MaxPool2d(kernel\_size=2, stride=2, padding=0, dilation=1,
+ceil\_mode=False)
+  )
+  (classifier): Sequential(
+    (0): Flatten(start\_dim=1, end\_dim=-1)
+    (1): Linear(in\_features=512, out\_features=43, bias=True)
+  )
+)
+Model B trainable parameters: 25526
+    \end{Verbatim}
+
     Forward-pass smoke check
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{24}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{images}\PY{p}{,} \PY{n}{labels} \PY{o}{=} \PY{n+nb}{next}\PY{p}{(}\PY{n+nb}{iter}\PY{p}{(}\PY{n}{train\PYZus{}loader}\PY{p}{)}\PY{p}{)}
 \PY{n}{model\PYZus{}b}\PY{o}{.}\PY{n}{eval}\PY{p}{(}\PY{p}{)}
@@ -605,8 +668,12 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+Smoke check passed: (32, 3, 64, 64) -> (32, 43)
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{25}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{from} \PY{n+nn}{Common}\PY{n+nn}{.}\PY{n+nn}{training} \PY{k+kn}{import} \PY{p}{(}
     \PY{n}{train\PYZus{}model}\PY{p}{,}
@@ -628,7 +695,7 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{26}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{selected\PYZus{}optimizer} \PY{o}{=} \PY{p}{(}
     \PY{n}{PROJECT\PYZus{}ROOT}
@@ -644,8 +711,12 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+Final optimizer: Adam
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{27}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{n}{SEED}\PY{p}{)}
 \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{n}{SEED}\PY{p}{)}
@@ -670,7 +741,7 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{28}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{model\PYZus{}b}\PY{p}{,} \PY{n}{history\PYZus{}b} \PY{o}{=} \PY{n}{train\PYZus{}model}\PY{p}{(}
     \PY{n}{model}\PY{o}{=}\PY{n}{model\PYZus{}b}\PY{p}{,}
@@ -681,15 +752,74 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
     \PY{n}{epochs}\PY{o}{=}\PY{l+m+mi}{30}\PY{p}{,}
     \PY{n}{device}\PY{o}{=}\PY{n}{device}
 \PY{p}{)}
-
-\PY{p}{(}\PY{n}{PROJECT\PYZus{}ROOT} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{results}\PY{l+s+s2}{\PYZdq{}} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{metrics}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{mkdir}\PY{p}{(}\PY{n}{parents}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{exist\PYZus{}ok}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
-\PY{k}{with} \PY{p}{(}\PY{n}{PROJECT\PYZus{}ROOT} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{results}\PY{l+s+s2}{\PYZdq{}} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{metrics}\PY{l+s+s2}{\PYZdq{}} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{model\PYZus{}b\PYZus{}history.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{w}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{utf\PYZhy{}8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{k}{as} \PY{n}{history\PYZus{}file}\PY{p}{:}
-    \PY{n}{json}\PY{o}{.}\PY{n}{dump}\PY{p}{(}\PY{n}{history\PYZus{}b}\PY{p}{,} \PY{n}{history\PYZus{}file}\PY{p}{,} \PY{n}{indent}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+Epoch 01/30 | Train Loss: 2.8215 | Train Acc: 0.2089 | Val Loss: 1.7759 | Val
+Acc: 0.4525 | Time: 36.75s
+Epoch 02/30 | Train Loss: 1.6323 | Train Acc: 0.4833 | Val Loss: 1.2287 | Val
+Acc: 0.5911 | Time: 36.31s
+Epoch 03/30 | Train Loss: 1.2048 | Train Acc: 0.6055 | Val Loss: 0.8532 | Val
+Acc: 0.7242 | Time: 45.34s
+Epoch 04/30 | Train Loss: 0.9079 | Train Acc: 0.7052 | Val Loss: 0.6430 | Val
+Acc: 0.7793 | Time: 44.48s
+Epoch 05/30 | Train Loss: 0.7137 | Train Acc: 0.7681 | Val Loss: 0.4845 | Val
+Acc: 0.8318 | Time: 33.40s
+Epoch 06/30 | Train Loss: 0.5606 | Train Acc: 0.8155 | Val Loss: 0.3962 | Val
+Acc: 0.8689 | Time: 33.75s
+Epoch 07/30 | Train Loss: 0.4832 | Train Acc: 0.8437 | Val Loss: 0.3540 | Val
+Acc: 0.8781 | Time: 33.01s
+Epoch 08/30 | Train Loss: 0.4267 | Train Acc: 0.8605 | Val Loss: 0.3080 | Val
+Acc: 0.8999 | Time: 33.06s
+Epoch 09/30 | Train Loss: 0.3771 | Train Acc: 0.8751 | Val Loss: 0.2512 | Val
+Acc: 0.9157 | Time: 32.92s
+Epoch 10/30 | Train Loss: 0.3307 | Train Acc: 0.8894 | Val Loss: 0.2233 | Val
+Acc: 0.9282 | Time: 33.68s
+Epoch 11/30 | Train Loss: 0.3082 | Train Acc: 0.9012 | Val Loss: 0.1883 | Val
+Acc: 0.9434 | Time: 33.10s
+Epoch 12/30 | Train Loss: 0.2867 | Train Acc: 0.9065 | Val Loss: 0.1870 | Val
+Acc: 0.9434 | Time: 33.20s
+Epoch 13/30 | Train Loss: 0.2779 | Train Acc: 0.9084 | Val Loss: 0.1719 | Val
+Acc: 0.9419 | Time: 33.54s
+Epoch 14/30 | Train Loss: 0.2476 | Train Acc: 0.9177 | Val Loss: 0.1517 | Val
+Acc: 0.9527 | Time: 33.19s
+Epoch 15/30 | Train Loss: 0.2304 | Train Acc: 0.9225 | Val Loss: 0.1636 | Val
+Acc: 0.9479 | Time: 33.32s
+Epoch 16/30 | Train Loss: 0.2151 | Train Acc: 0.9302 | Val Loss: 0.1515 | Val
+Acc: 0.9479 | Time: 34.17s
+Epoch 17/30 | Train Loss: 0.2055 | Train Acc: 0.9321 | Val Loss: 0.1540 | Val
+Acc: 0.9532 | Time: 33.39s
+Epoch 18/30 | Train Loss: 0.2073 | Train Acc: 0.9307 | Val Loss: 0.1303 | Val
+Acc: 0.9590 | Time: 33.21s
+Epoch 19/30 | Train Loss: 0.1825 | Train Acc: 0.9394 | Val Loss: 0.1282 | Val
+Acc: 0.9600 | Time: 33.04s
+Epoch 20/30 | Train Loss: 0.1727 | Train Acc: 0.9426 | Val Loss: 0.1287 | Val
+Acc: 0.9597 | Time: 32.44s
+Epoch 21/30 | Train Loss: 0.1736 | Train Acc: 0.9415 | Val Loss: 0.1197 | Val
+Acc: 0.9652 | Time: 32.67s
+Epoch 22/30 | Train Loss: 0.1699 | Train Acc: 0.9441 | Val Loss: 0.0978 | Val
+Acc: 0.9715 | Time: 32.49s
+Epoch 23/30 | Train Loss: 0.1545 | Train Acc: 0.9509 | Val Loss: 0.0959 | Val
+Acc: 0.9690 | Time: 33.02s
+Epoch 24/30 | Train Loss: 0.1439 | Train Acc: 0.9519 | Val Loss: 0.1076 | Val
+Acc: 0.9682 | Time: 33.09s
+Epoch 25/30 | Train Loss: 0.1447 | Train Acc: 0.9521 | Val Loss: 0.0904 | Val
+Acc: 0.9722 | Time: 33.21s
+Epoch 26/30 | Train Loss: 0.1500 | Train Acc: 0.9499 | Val Loss: 0.0837 | Val
+Acc: 0.9785 | Time: 32.81s
+Epoch 27/30 | Train Loss: 0.1335 | Train Acc: 0.9557 | Val Loss: 0.0791 | Val
+Acc: 0.9772 | Time: 32.97s
+Epoch 28/30 | Train Loss: 0.1362 | Train Acc: 0.9546 | Val Loss: 0.1016 | Val
+Acc: 0.9700 | Time: 33.16s
+Epoch 29/30 | Train Loss: 0.1304 | Train Acc: 0.9565 | Val Loss: 0.1193 | Val
+Acc: 0.9652 | Time: 33.32s
+Epoch 30/30 | Train Loss: 0.1347 | Train Acc: 0.9557 | Val Loss: 0.0809 | Val
+Acc: 0.9757 | Time: 33.24s
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{29}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{FIGURES\PYZus{}DIR} \PY{o}{=} \PY{p}{(}
     \PY{n}{PROJECT\PYZus{}ROOT}
@@ -705,8 +835,18 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{ModelB_files/ModelB_17_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{ModelB_files/ModelB_17_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{30}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{y\PYZus{}true\PYZus{}b}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}b} \PY{o}{=} \PY{n}{get\PYZus{}predictions}\PY{p}{(}
     \PY{n}{model\PYZus{}b}\PY{p}{,}
@@ -723,8 +863,13 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{'Test Accuracy': 0.9767267267267268, 'Macro Precision': 0.9806833554287041,
+'Macro Recall': 0.9790990022944088\}
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{31}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{plot\PYZus{}confusion\PYZus{}matrix}\PY{p}{(}
     \PY{n}{y\PYZus{}true\PYZus{}b}\PY{p}{,}
@@ -735,32 +880,76 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{ModelB_files/ModelB_19_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{32}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{report\PYZus{}b} \PY{o}{=} \PY{n}{classification\PYZus{}report}\PY{p}{(}
+\PY{n}{print\PYZus{}classification\PYZus{}report}\PY{p}{(}
     \PY{n}{y\PYZus{}true\PYZus{}b}\PY{p}{,}
-    \PY{n}{y\PYZus{}pred\PYZus{}b}\PY{p}{,}
-    \PY{n}{output\PYZus{}dict}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,}
-    \PY{n}{zero\PYZus{}division}\PY{o}{=}\PY{l+m+mi}{0}
-\PY{p}{)}
-\PY{n}{print\PYZus{}classification\PYZus{}report}\PY{p}{(}\PY{n}{y\PYZus{}true\PYZus{}b}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}b}\PY{p}{)}
-
-\PY{n}{metrics\PYZus{}dir} \PY{o}{=} \PY{n}{PROJECT\PYZus{}ROOT} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{results}\PY{l+s+s2}{\PYZdq{}} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{metrics}\PY{l+s+s2}{\PYZdq{}}
-\PY{n}{metrics\PYZus{}dir}\PY{o}{.}\PY{n}{mkdir}\PY{p}{(}\PY{n}{parents}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{exist\PYZus{}ok}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
-\PY{k}{with} \PY{p}{(}\PY{n}{metrics\PYZus{}dir} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{model\PYZus{}b\PYZus{}classification\PYZus{}report.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{w}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{utf\PYZhy{}8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{k}{as} \PY{n}{report\PYZus{}file}\PY{p}{:}
-    \PY{n}{json}\PY{o}{.}\PY{n}{dump}\PY{p}{(}\PY{n}{report\PYZus{}b}\PY{p}{,} \PY{n}{report\PYZus{}file}\PY{p}{,} \PY{n}{indent}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
-\PY{n}{np}\PY{o}{.}\PY{n}{savetxt}\PY{p}{(}
-    \PY{n}{metrics\PYZus{}dir} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{model\PYZus{}b\PYZus{}confusion\PYZus{}matrix.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
-    \PY{n}{confusion\PYZus{}matrix}\PY{p}{(}\PY{n}{y\PYZus{}true\PYZus{}b}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}b}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{43}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,}
-    \PY{n}{fmt}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
-    \PY{n}{delimiter}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{,}\PY{l+s+s2}{\PYZdq{}}
+    \PY{n}{y\PYZus{}pred\PYZus{}b}
 \PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+              precision    recall  f1-score   support
+
+           0     1.0000    0.9474    0.9730        19
+           1     0.9683    0.9596    0.9640       223
+           2     0.9694    0.9528    0.9610       233
+           3     0.9276    0.9527    0.9400       148
+           4     0.9593    0.9593    0.9593       221
+           5     0.9306    0.9617    0.9459       209
+           6     0.9792    1.0000    0.9895        47
+           7     0.9355    0.9355    0.9355       155
+           8     0.9640    0.9306    0.9470       144
+           9     0.9936    1.0000    0.9968       155
+          10     0.9949    0.9949    0.9949       197
+          11     1.0000    0.9712    0.9854       139
+          12     0.9953    1.0000    0.9977       213
+          13     1.0000    0.9953    0.9976       213
+          14     1.0000    1.0000    1.0000        78
+          15     0.9647    1.0000    0.9820        82
+          16     1.0000    1.0000    1.0000        34
+          17     1.0000    1.0000    1.0000        95
+          18     0.9906    0.9906    0.9906       106
+          19     1.0000    0.9200    0.9583        25
+          20     1.0000    0.9487    0.9737        39
+          21     0.9722    1.0000    0.9859        35
+          22     0.9268    1.0000    0.9620        38
+          23     0.8462    1.0000    0.9167        44
+          24     0.9643    1.0000    0.9818        27
+          25     0.9931    0.9730    0.9829       148
+          26     1.0000    0.9524    0.9756        63
+          27     1.0000    1.0000    1.0000        25
+          28     1.0000    1.0000    1.0000        49
+          29     1.0000    0.9524    0.9756        21
+          30     0.9804    1.0000    0.9901        50
+          31     0.9868    0.9615    0.9740        78
+          32     1.0000    0.9655    0.9825        29
+          33     1.0000    1.0000    1.0000        59
+          34     1.0000    0.9333    0.9655        45
+          35     1.0000    1.0000    1.0000       113
+          36     1.0000    1.0000    1.0000        56
+          37     1.0000    1.0000    1.0000        20
+          38     0.9854    1.0000    0.9926       202
+          39     1.0000    1.0000    1.0000        23
+          40     1.0000    1.0000    1.0000        29
+          41     1.0000    0.9429    0.9706        35
+          42     0.9412    1.0000    0.9697        32
+
+    accuracy                         0.9767      3996
+   macro avg     0.9807    0.9791    0.9795      3996
+weighted avg     0.9773    0.9767    0.9768      3996
+
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{33}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{average\PYZus{}epoch\PYZus{}time\PYZus{}b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}
     \PY{n}{history\PYZus{}b}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{epoch\PYZus{}time}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
@@ -773,8 +962,12 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+Average epoch time: 34.1760440500002
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{34}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{parameters\PYZus{}b} \PY{o}{=} \PY{n}{total\PYZus{}parameters}\PY{p}{(}
     \PY{n}{model\PYZus{}b}
@@ -818,8 +1011,14 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+Parameters: 25526
+Estimated size: 99.7109375 KB
+Actual size: 105.6103515625 KB
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{35}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{inference\PYZus{}time\PYZus{}b} \PY{o}{=} \PY{p}{(}
     \PY{n}{measure\PYZus{}inference\PYZus{}time}\PY{p}{(}
@@ -837,8 +1036,12 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{Verbatim}
 \end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+Inference time: 0.341721562500652 ms/image
+    \end{Verbatim}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{36}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{p}{(}\PY{n}{PROJECT\PYZus{}ROOT} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{results}\PY{l+s+s2}{\PYZdq{}} \PY{o}{/} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{metrics}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{mkdir}\PY{p}{(}\PY{n}{parents}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{exist\PYZus{}ok}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
 
@@ -870,6 +1073,20 @@ per image (approximately \textbf{85\% fewer MACs}). Model B is below the
 \end{Verbatim}
 \end{tcolorbox}
 
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{36}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+     Model  Parameters  Estimated FP32 Size (KB)  Actual Model Size (KB)  \textbackslash{}
+0  Model B       25526                 99.710938              105.610352
+
+   Average Epoch Time (s)  Inference Time (ms/image)  Test Accuracy  \textbackslash{}
+0               34.176044                   0.341722       0.976727
+
+   Macro Precision  Macro Recall
+0         0.980683      0.979099
+\end{Verbatim}
+\end{tcolorbox}
+        
 
     % Add a bibliography block to the postdoc
     

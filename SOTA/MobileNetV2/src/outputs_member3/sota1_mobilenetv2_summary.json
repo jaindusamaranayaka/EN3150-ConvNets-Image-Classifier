@@ -1,0 +1,20 @@
+{
+  "model": "MobileNetV2 (ImageNet pretrained, fine-tuned)",
+  "input": "3x64x64",
+  "total_params": 2278955,
+  "trainable_params": 2278955,
+  "size_on_disk_MB": 8.93,
+  "fp32_weights_MB_theoretical": 8.69,
+  "cpu_latency_ms_per_image": 26.84,
+  "mean_epoch_time_s_head_stage": 26.0,
+  "mean_epoch_time_s_full_stage": 34.8,
+  "best_val_acc": 0.998998998998999,
+  "test": {
+    "accuracy": 0.998998998998999,
+    "precision_macro": 0.9981088912149759,
+    "recall_macro": 0.9985129313104688,
+    "f1_macro": 0.9982834838648755,
+    "precision_weighted": 0.9990227768538271,
+    "recall_weighted": 0.998998998998999
+  }
+}
