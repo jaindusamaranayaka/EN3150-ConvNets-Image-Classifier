@@ -84,7 +84,7 @@ Open the notebooks from the repository (each one finds the project root itself) 
 
 | Step | Notebook | Needs | Time (GTX 1660 Ti) |
 |---|---|---|---|
-| 1 | `Optimizer/Main_Study_ModelA/src/optimizer_benchmark.ipynb` | internet (downloads its own copy of GTSRB) | ~50 min |
+| 1 | `Optimizer/Main_Study_ModelA/src/optimizer_benchmark.ipynb` | dataset (uses its own seeded split, not `splits/`) | ~50 min |
 | 2 | `Model_A/src/ModelA.ipynb` | dataset, `results/Optimizer/selected_optimizer.txt` | ~20 min |
 | 3 | `Model_B/src/ModelB.ipynb` | dataset, `results/Optimizer/selected_optimizer.txt` | ~20 min |
 | 4 | `SOTA/MobileNetV2/src/MobileNetV2_Retrain.ipynb` | dataset, internet (ImageNet weights) | ~20 min |
@@ -92,8 +92,8 @@ Open the notebooks from the repository (each one finds the project root itself) 
 | 6 | `Comparison/src/ModelA_vs_ModelB.ipynb` | results of steps 2-3 | seconds |
 | 7 | `Comparison/src/ModelB_vs_SOTA.ipynb` | results of steps 2-5 | ~1 min |
 
-- `selected_optimizer.txt` (Adam) is already committed, so steps 2-7 can run without step 1.
-  `Optimizer/Preliminary_Run_ModelB/` is the notebook that writes it.
+- `selected_optimizer.txt` (Adam) is already committed, so steps 2-7 can run without step 1. The optimizer study
+  (step 1) writes it from its validation results; the earlier `Optimizer/Preliminary_Run_ModelB/` notebook does too.
 - All notebooks fix their random seeds (42) and use deterministic cuDNN settings.
 - Run the training notebooks one at a time on an otherwise idle computer: they also measure training time per epoch.
 
