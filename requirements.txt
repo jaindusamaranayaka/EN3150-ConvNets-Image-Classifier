@@ -5,3 +5,8 @@ pandas
 matplotlib
 scikit-learn
 Pillow
+# Jupyter kernel for running the notebooks
+ipykernel
+# Older pyzmq (e.g. 24.x) loads a DLL that stops `import torch` working
+# inside Jupyter kernels on Windows (WinError 1114); 27.2.0 is tested
+pyzmq>=27
