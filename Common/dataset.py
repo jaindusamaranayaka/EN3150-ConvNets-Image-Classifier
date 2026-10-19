@@ -128,6 +128,13 @@ def create_dataloaders(
     seed=42
 ):
 
+    # Fail early with a clear message instead of a missing-image error at the first batch
+    if not Path(data_root).is_dir():
+        raise FileNotFoundError(
+            f"Dataset folder not found: {data_root}. "
+            "Run `python download_data.py` from the project root first."
+        )
+
     selected_train_transform = (
         train_transform
         if train_transform_override is None
